@@ -1,5 +1,7 @@
 <?php
 
+use App\Proxy;
+use App\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $r = Proxy::find(1319);
+//    $r = Proxy::find(1);
+    dump($r);
+    dd($r->checkProxy());
+
     return view('welcome');
 });

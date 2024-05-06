@@ -102,6 +102,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/storage" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/geoip2/geoip2" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/maxmind/web-service-common" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/maxmind-db/reader" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

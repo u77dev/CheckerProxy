@@ -19,7 +19,7 @@ class CreateProxiesTable extends Migration
             $table->ipAddress('ip');
             $table->integer('port');
             $table->enum('status', ['new', 'in_work', 'bad', 'good'])->default('new');
-            $table->enum('type', ['http', 'socks4', 'socks5'])->default('http');
+            $table->enum('type', ['http', 'socks4', 'socks5'])->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->ipAddress('real_ip')->nullable();
