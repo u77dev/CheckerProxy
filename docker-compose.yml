@@ -1,0 +1,61 @@
+# Версия docker-compose
+version: '3.8'
+
+# Создаем общую сеть default для всех контейнеров
+networks:
+  default:
+    driver: bridge
+
+# Создаем отдельные контейнеры по сервисам
+services:
+  db:
+    image: mysql:8.0.15
+    container_name: ChekerProxy_db
+    restart: always
+    networks:
+      - default
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./docker/logs:/logs:delegated
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: ChekerProxy_root
+      MYSQL_DATABASE: cp_dbname
+      MYSQL_USER: cp_username
+      MYSQL_PASSWORD: cp_password
+  nginx:
+    image: nginx:1.16.1
+    container_name: ChekerProxy_nginx
+    restart: always
+    networks:
+      - default
+    ports:
+      - '80:80'
+    volumes:
+      - ./:/app:delegated
+      - ./docker/nginx/cp.localhost.conf:/etc/nginx/conf.d/cp.localhost.conf
+    depends_on:
+      - php
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: ChekerProxy_php
+    restart: always
+    networks:
+      - default
+    volumes:
+      - ./:/app:delegated
+      - ./docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+    depends_on:
+      - db
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: ChekerProxy_rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - default
