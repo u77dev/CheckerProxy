@@ -17,18 +17,18 @@ ENV LANG ru_RU.UTF-8
 ENV LANGUAGE ru_RU.UTF-8
 
 # Common
-#RUN apt-get update \
-#	&& apt-get install -y \
-#		openssl \
-#		git \
-#		gnupg2
+RUN apt-get update \
+	&& apt-get install -y \
+		openssl \
+		git \
+		gnupg2
 
 # PHP
 # intl
-#RUN apt-get update \
-#	&& apt-get install -y libicu-dev \
-#	&& docker-php-ext-configure intl \
-#	&& docker-php-ext-install -j$(nproc) intl
+RUN apt-get update \
+	&& apt-get install -y libicu-dev \
+	&& docker-php-ext-configure intl \
+	&& docker-php-ext-install -j$(nproc) intl
 
 # xml
 #RUN apt-get update \
@@ -79,16 +79,16 @@ RUN docker-php-ext-install -j$(nproc) \
 #		bcmath
 
 # compression
-#RUN apt-get update \
-#	&& apt-get install -y \
-#	libbz2-dev \
-#	zlib1g-dev \
-#	libzip-dev \
-#    unzip \
-#    p7zip \
-#	&& docker-php-ext-install -j$(nproc) \
-#		zip \
-#		bz2
+RUN apt-get update \
+	&& apt-get install -y \
+	libbz2-dev \
+	zlib1g-dev \
+	libzip-dev \
+    unzip \
+    p7zip \
+	&& docker-php-ext-install -j$(nproc) \
+		zip \
+		bz2
 
 # ftp
 #RUN apt-get update \
