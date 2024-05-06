@@ -125,9 +125,9 @@ RUN docker-php-ext-install -j$(nproc) \
 #RUN alias php_xdebug="php -d$XDEBUG_EXT vendor/bin/phpunit"
 
 # Install composer and put binary into $PATH
-#RUN curl -sS https://getcomposer.org/installer | php \
-#	&& mv composer.phar /usr/local/bin/ \
-#	&& ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php \
+	&& mv composer.phar /usr/local/bin/ \
+	&& ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
 # Install PHP Code sniffer
 #RUN curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar \
