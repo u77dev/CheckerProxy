@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Arr;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Database\Eloquent\Model;
